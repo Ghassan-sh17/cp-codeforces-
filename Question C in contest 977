@@ -1,0 +1,49 @@
+//https://codeforces.com/contest/977/problem/C
+#include <bits/stdc++.h>
+#define int long long
+#define db double
+#define yes "YES\n"
+#define no "NO\n"
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(), v.rend()
+using namespace std;
+const int N = 1e9 ; 
+void solve(){
+    int n , k ; cin >> n >> k ; 
+    vector<int> v(n) ; 
+    for(int i = 0 ; i < n ; ++i) {
+        cin >> v[i] ;  
+    }
+    sort(all(v)) ; 
+    int l = 1 , r = N ;  
+    function<int(int mid)> can =[&](int mid) -> int {
+        int cnt = 0 ;  
+        for(int i = 0 ; i < n ; ++i) { 
+            if(v[i] <= mid) cnt++ ;  
+        }
+        return cnt ; 
+    };
+    int ans = -1 ; 
+    while(l <= r) { 
+        int mid = (r + l) >> 1 ; 
+        if(can(mid) >= k) {
+            if(can(mid) == k) ans = mid ; 
+            r = mid - 1 ; 
+        }else {
+            l = mid + 1 ; 
+        }
+    }
+    cout << ans << "\n" ; 
+
+}
+
+int32_t main(){
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);
+    
+    int gas = 1;
+    //cin >> gas; 
+    while(gas--) solve();
+
+    return pow(1-1, 2);
+}
