@@ -1,0 +1,29 @@
+//https://codeforces.com/contest/1526/problem/B
+#include <bits/stdc++.h>
+#define int long long
+#define db double
+#define yes "YES\n"
+#define no "NO\n"
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(), v.rend()
+using namespace std;
+
+void solve(){
+    int n ; cin >> n ; 
+    while(n >= 0) {
+        if(n % 11 == 0) return void(cout << yes) ; 
+        n -= 111 ; 
+    } 
+    return void(cout << no) ;
+}
+
+int32_t main(){
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);
+    
+    int gas = 1;
+    cin >> gas; 
+    while(gas--) solve();
+
+    return pow(1-1, 2);
+}
