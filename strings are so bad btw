@@ -1,0 +1,70 @@
+//https://codeforces.com/contest/550/problem/A
+//my solution 
+    #include <bits/stdc++.h>
+    #define int long long
+    #define db double
+    #define yes "YES\n"
+    #define no "NO\n"
+    #define all(v) v.begin(),v.end()
+    #define rall(v) v.rbegin(), v.rend()
+    using namespace std;
+
+    void solve(){
+        string s; cin >> s; 
+        int n = (int)s.size(); 
+        int ok1 = false , ok2 = false ; 
+        vector<pair<int , int>> idx1 , idx2 ; 
+        for(int i = 0 ; i < n - 1 ; ++i) {
+            if(s[i] == 'A' && s[i+1] == 'B') {
+                idx1.push_back({i , i + 1});  
+            }
+        }
+        //cout << idx1 << " , " << idx2 << "\n" ; 
+        for(int i = 0 ; i < n - 1 ; ++i) {
+            if(s[i] == 'B' && s[i+1] == 'A') {
+                idx2.push_back({i , i + 1});
+            } 
+        } 
+        if(n < 4) return void(cout << no) ; 
+        if(idx1.size() == 0 || idx2.size() == 0) return void(cout << no) ; 
+        
+        int l = 0  , r = 0 ; 
+        for(int i = 0 ; i < n - 1 ; ++i) { 
+            if(s[i] == 'A' && s[i+1] == 'B') {
+                l = i , r = i + 1 ; 
+                break ; 
+            } 
+        }
+        for(int i = r + 1 ; i < n - 1 ; ++i) {
+            if(s[i] == 'B' && s[i+1] == 'A') {
+                ok1 = true ; 
+                break ; 
+            }
+        }
+        l = 0 , r = 0 ; 
+        for(int i = 0 ; i < n -1 ; ++i) { 
+            if(s[i] == 'B' && s[i+1] == 'A') {
+                l = i , r = i + 1 ; 
+                break ; 
+            } 
+        }
+        for(int i = r + 1 ; i < n - 1 ; ++i) {
+            if(s[i] == 'A' && s[i+1] == 'B') {
+                ok2 = true ; 
+                break ; 
+            }
+        }
+
+        ok1 || ok2 ? cout << yes : cout << no ; 
+    }
+
+    int32_t main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+        
+        int gas = 1;
+        //cin >> gas; 
+        while(gas--) solve();
+
+        return pow(1-1, 2);
+    }
